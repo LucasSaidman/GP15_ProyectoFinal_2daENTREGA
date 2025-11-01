@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2025 a las 22:12:52
+-- Tiempo de generación: 01-11-2025 a las 22:28:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -48,7 +48,7 @@ CREATE TABLE `comprador` (
   `dni` int(11) NOT NULL,
   `nombre` varchar(60) NOT NULL,
   `fecha_nac` date NOT NULL,
-  `contraseña` varchar(120) NOT NULL,
+  `contraseña` varchar(120) DEFAULT NULL,
   `email` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
