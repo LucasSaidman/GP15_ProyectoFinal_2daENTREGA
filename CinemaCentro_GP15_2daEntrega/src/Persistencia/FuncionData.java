@@ -29,8 +29,7 @@ public class FuncionData {
     }
 
     public int crear(Funcion f) throws SQLException {
-        String sql = "INSERT INTO funcion(id_pelicula, nro_sala, idioma, es_3d, subtitulada,hora_inicio, hora_fin, lugares_disponibles, precio_tipo)" +
-                "\nVALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO funcion(id_pelicula, nro_sala, idioma, es_3d, subtitulada,hora_inicio, hora_fin, lugares_disponibles, precio_tipo) VALUES(?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, f.getIdpelicula());
             ps.setInt(2, f.getNrosala());
@@ -117,7 +116,7 @@ public class FuncionData {
         }
     }
 
-    public boolean existeSolape(int nroSala, LocalDateTime ini, LocalDateTime fin) throws SQLException {
+    public boolean existeSolapado(int nroSala, LocalDateTime ini, LocalDateTime fin) throws SQLException {
         String sql = "SELECT COUNT(*) FROM funcion" +
             "\nWHERE nro_sala=? AND ( (? < hora_fin) AND (? > hora_inicio) )";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
