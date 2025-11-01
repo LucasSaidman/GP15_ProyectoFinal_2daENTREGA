@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2025 a las 23:39:09
+-- Tiempo de generación: 01-11-2025 a las 22:12:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,10 +31,10 @@ USE `cinemacentro`;
 
 CREATE TABLE `asiento` (
   `id_asiento` int(11) NOT NULL,
-  `nro_sala` int(11) NOT NULL,
   `fila` char(1) NOT NULL,
   `numero` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL,
+  `id_funcion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -61,7 +61,6 @@ CREATE TABLE `comprador` (
 CREATE TABLE `detalle_ticket` (
   `id_detalle` int(11) NOT NULL,
   `id_ticket` int(11) NOT NULL,
-  `id_funcion` int(11) NOT NULL,
   `id_asiento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -130,7 +129,6 @@ INSERT INTO `sala` (`nro_sala`, `apta_3d`, `capacidad`, `estado`) VALUES
 CREATE TABLE `ticket_compra` (
   `id_ticket` int(11) NOT NULL,
   `id_comprador` int(11) NOT NULL,
-  `id_funcion` int(11) NOT NULL,
   `fecha_compra` datetime NOT NULL,
   `precio_unitario` decimal(6,2) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -148,7 +146,7 @@ CREATE TABLE `ticket_compra` (
 --
 ALTER TABLE `asiento`
   ADD PRIMARY KEY (`id_asiento`),
-  ADD KEY `fk_asiento_sala` (`nro_sala`);
+  ADD KEY `fk_asiento_funcion` (`id_funcion`);
 
 --
 -- Indices de la tabla `comprador`
@@ -163,7 +161,6 @@ ALTER TABLE `comprador`
 ALTER TABLE `detalle_ticket`
   ADD PRIMARY KEY (`id_detalle`),
   ADD KEY `fk_detalle_ticket` (`id_ticket`),
-  ADD KEY `fk_detalle_funcion` (`id_funcion`),
   ADD KEY `fk_detalle_asiento` (`id_asiento`);
 
 --
@@ -192,8 +189,7 @@ ALTER TABLE `sala`
 --
 ALTER TABLE `ticket_compra`
   ADD PRIMARY KEY (`id_ticket`),
-  ADD KEY `fk_ticket_comprador` (`id_comprador`),
-  ADD KEY `fk_ticket_funcion` (`id_funcion`);
+  ADD KEY `fk_ticket_comprador` (`id_comprador`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -249,14 +245,13 @@ ALTER TABLE `ticket_compra`
 -- Filtros para la tabla `asiento`
 --
 ALTER TABLE `asiento`
-  ADD CONSTRAINT `fk_asiento_sala` FOREIGN KEY (`nro_sala`) REFERENCES `sala` (`nro_sala`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_asiento_funcion` FOREIGN KEY (`id_funcion`) REFERENCES `funcion` (`id_funcion`);
 
 --
 -- Filtros para la tabla `detalle_ticket`
 --
 ALTER TABLE `detalle_ticket`
   ADD CONSTRAINT `fk_detalle_asiento` FOREIGN KEY (`id_asiento`) REFERENCES `asiento` (`id_asiento`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_detalle_funcion` FOREIGN KEY (`id_funcion`) REFERENCES `funcion` (`id_funcion`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_detalle_ticket` FOREIGN KEY (`id_ticket`) REFERENCES `ticket_compra` (`id_ticket`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -270,8 +265,7 @@ ALTER TABLE `funcion`
 -- Filtros para la tabla `ticket_compra`
 --
 ALTER TABLE `ticket_compra`
-  ADD CONSTRAINT `fk_ticket_comprador` FOREIGN KEY (`id_comprador`) REFERENCES `comprador` (`id_comprador`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ticket_funcion` FOREIGN KEY (`id_funcion`) REFERENCES `funcion` (`id_funcion`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_ticket_comprador` FOREIGN KEY (`id_comprador`) REFERENCES `comprador` (`id_comprador`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
