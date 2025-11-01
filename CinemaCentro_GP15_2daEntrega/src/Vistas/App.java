@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vistas;
 
-/**
- *
- * @author Lucas
- */
+/** 
+    @author Grupo 15
+    Luis Ezequiel Sosa
+    Lucas Saidman
+    Luca Rodrigaño
+    Ignacio Rodriguez
+**/
+
 public class App extends javax.swing.JFrame {
-    
-    //private VistaPelicula vistaPelicula;
 
     /**
      * Creates new form App
