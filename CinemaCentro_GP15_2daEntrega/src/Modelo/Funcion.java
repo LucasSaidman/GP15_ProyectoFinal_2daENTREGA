@@ -1,11 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+/** 
+    @author Grupo 15
+    Luis Ezequiel Sosa
+    Lucas Saidman
+    Luca Rodrigaño
+    Ignacio Rodriguez
+**/
 
 public class Funcion {
     private int id_funcion;
@@ -17,7 +21,7 @@ public class Funcion {
     private Date hora_inicio;
     private Date hora_fin;
     private int lugares_disponibles;
-   private java.math.BigDecimal precio_tipo;
+    private java.math.BigDecimal precio_tipo;
 
     public Funcion() {
     }

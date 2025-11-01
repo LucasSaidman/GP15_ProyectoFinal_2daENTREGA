@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- *
- * @author Usuario
- */
+/** 
+    @author Grupo 15
+    Luis Ezequiel Sosa
+    Lucas Saidman
+    Luca Rodrigaño
+    Ignacio Rodriguez
+**/
+
 public class TicketCompra {
     
     private int id_ticket;

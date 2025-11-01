@@ -9,6 +9,14 @@ import org.mariadb.jdbc.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/** 
+    @author Grupo 15
+    Luis Ezequiel Sosa
+    Lucas Saidman
+    Luca Rodrigaño
+    Ignacio Rodriguez
+**/
+
 public class PeliculaData {
 
     private Connection con;
