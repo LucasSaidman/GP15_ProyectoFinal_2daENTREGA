@@ -1,13 +1,10 @@
 package Persistencia;
 
+import Modelo.Conexion;
 import Modelo.Pelicula;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 import javax.swing.JOptionPane;
-import org.mariadb.jdbc.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 /** 
     @author Grupo 15
@@ -19,14 +16,13 @@ import java.util.ArrayList;
 
 public class PeliculaData {
 
-    private Connection con;
+    private final Connection con;   
 
     public PeliculaData() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3306/cinemacentropruebadedatos", "root", "");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error de conexión: " + e.getMessage());
+            con = Conexion.getConexion();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
