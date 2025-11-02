@@ -21,11 +21,11 @@ public class TicketCompra {
     private java.math.BigDecimal monto_total;
     private String Canal;
     private String medio_pago;
-
+    private int cantidad;
     public TicketCompra() {
     }
 
-    public TicketCompra(int id_ticket, int id_comprador, int id_funcion, Date fecha_compra, BigDecimal precio_unitario, BigDecimal monto_total, String Canal, String medio_pago) {
+    public TicketCompra(int id_ticket, int id_comprador, int id_funcion, Date fecha_compra, BigDecimal precio_unitario, BigDecimal monto_total, String Canal,int cantidad, String medio_pago) {
         this.id_ticket = id_ticket;
         this.id_comprador = id_comprador;
         this.id_funcion = id_funcion;
@@ -34,12 +34,21 @@ public class TicketCompra {
         this.monto_total = monto_total;
         this.Canal = Canal;
         this.medio_pago = medio_pago;
+        this.cantidad = cantidad;
     }
 
     public int getIdticket() {
         return id_ticket;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
     public void setIdticket(int id_ticket) {
         this.id_ticket = id_ticket;
     }
@@ -102,9 +111,9 @@ public class TicketCompra {
 
     @Override
     public String toString() {
-        return "TicketCompra{" + "id_ticket=" + id_ticket + ", id_comprador=" + id_comprador + ", id_funcion=" + id_funcion + ", fecha_compra=" + fecha_compra + ", precio_unitario=" + precio_unitario + ", monto_total=" + monto_total + ", Canal=" + Canal + ", medio_pago=" + medio_pago + '}';
+        return "TicketCompra{" + "id_ticket=" + id_ticket + ", id_comprador=" + id_comprador + ", id_funcion=" + id_funcion + ", fecha_compra=" + fecha_compra + ", precio_unitario=" + precio_unitario + ", monto_total=" + monto_total + ", Canal=" + Canal + ", medio_pago=" + medio_pago +", cantidad=" + cantidad + '}';
     }
-    
+
     
     
 }
