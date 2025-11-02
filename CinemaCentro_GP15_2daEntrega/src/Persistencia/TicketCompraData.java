@@ -6,6 +6,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/** 
+    @author Grupo 15
+    Luis Ezequiel Sosa
+    Lucas Saidman
+    Luca Rodrigaño
+    Ignacio Rodriguez
+**/
+
 public class TicketCompraData {
 
     private final Connection con;
